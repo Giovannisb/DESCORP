@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+
+<dataset>
+    <TB_DEPARTAMENTO NAME="TI" />
+    <TB_DEPARTAMENTO NAME="FINANCEIRO" />
+    <TB_DEPARTAMENTO NAME="ATENDIMENTO" />
+    <TB_DEPARTAMENTO NAME="BACKOFFICE" />
+    <TB_DEPARTAMENTO NAME="OPERACOES" />
+    
+    <TB_EMPREGADO cargo="DEV" name="Giovanni" salario="4300.21" id_departamento="1"/>
+    <TB_EMPREGADO cargo="ANALISTA" name="Marcelo" salario="5000.21" id_departamento="2"/>
+    <TB_EMPREGADO cargo="ATENDENTE" name="Aline" salario="1280.90" id_departamento="3"/>
+    <TB_EMPREGADO cargo="SUPERVISOR" name="Paulo" salario="4300.21" id_departamento="4"/>
+    <TB_EMPREGADO cargo="GERENTE" name="Mariana" salario="9300.21" id_departamento="5"/>
+</dataset>

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycompany.descorp;
+package com.mycompany.descorp; 
 
 import java.io.Serializable;
 import javax.persistence.Column;
@@ -21,6 +21,18 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "TB_DEPARTAMENTO")
+@NamedQueries(
+    {
+        @NameQuery(
+            name = "Update.Name",
+            query= "UPDATE Departamento d SET d.name = :name WHERE d.id = :id"
+        )
+        @NameQuery(
+            name = "Delete.Departamento",
+            query= "DELETE FROM Departamento d WHERE d.id = :id "
+        )
+    }
+)
 public class Departamento implements Serializable {
     @Id 
     @GeneratedValue( strategy=GenerationType.IDENTITY )

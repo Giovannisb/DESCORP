@@ -23,6 +23,29 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "TB_EMPREGADO")
+@NamedQueries(
+    @NameQuery(
+        name = "Update.Empregado",
+        query = "UPDATE TB_EMPREGADO e SET salario = 4000.00 WHERE e.name = "Giovanni" "
+    )
+
+    @NameQuery(
+        name = "Delete.Empregado",
+        query = "DELETE FROM TB_EMPREGADO e WHERE e.name = "Aline" "
+    )
+)
+
+// @Entity
+// @Table(name = "TB_EMPREGADO")
+// @NamedQueries(
+//     @NameQuery(
+//         name = "Delete.Empregado",
+//         query = "DELETE FROM TB_EMPREGADO e WHERE e.name = "Aline" "
+//     )
+// )
+
+@Entity
+@Table(name = "TB_EMPREGADO")
 public class Empregado implements Serializable {
     @Id
     @GeneratedValue( strategy= GenerationType.IDENTITY ) 

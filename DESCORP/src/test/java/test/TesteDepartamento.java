@@ -47,4 +47,24 @@ public class TesteDepartamento extends Teste {
         assertEquals(1, departamento.getId());
     }
 
+    @Test 
+    public void updateDepartamento(){
+        TypedQuery<Departamento> q = em.createNamedQuery("Update.Name", Departamento.class);
+        String newName = "Tecnologia da Informação";
+        q.setParameter("name", newName);
+        q.setParameter("id", 1);
+        int r = q.executeUpdate();
+        assertEquals(1, r);
+        Departamento departamento = em.find(Departamento.class, 1);;
+        assertEquals(newName, departamento.getName());
+    }
+
+    @Test 
+    public void deleteDepartamento(){
+        TypedQuery<Departamento> q = em.createNamedQuery("Delete.Departamento", Departamento.class);
+        q.setParameter("id", 2);
+        int r = q.executeUpdate();
+        assertEquals(1, r);
+    }
+
 }

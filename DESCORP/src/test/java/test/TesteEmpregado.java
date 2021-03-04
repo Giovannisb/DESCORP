@@ -10,10 +10,12 @@ import tests.DESCORP.java.DbUnitUtil;
 import com.mycompany.descorp.Empregado;
 import static com.mycompany.descorp.Empregado_.departamento;
 import java.text.ParseException;
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
+import javax.persistence.TypedQuery;
 import org.dbunit.DatabaseUnitException;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -24,23 +26,24 @@ import org.junit.Test;
 /**
  *
  * @author Giovanni
+ * @author David
  */
 public class TesteEmpregado extends Teste{
-//    @Test
-//    public void persistDepartamento() {
-//        Empregado aux = new Empregado();
-//        aux.setName("Ulisses");
-//        aux.setCargo("DIRETOR");
-//        aux.setSalario(15800.00);
-//        
-//        Departamento dpto = new Departamento();
-//        dpto = assertEquals(1, dpto.getId());
-//        aux.setDepartamento();
-//        em.persist(aux);
-//        em.flush(); //força que a persistência realizada vá para o banco neste momento.
-//
-//        assertNotNull(aux.getId());
-//    }
+    @Test
+    public void persistEmpregado() {
+        Empregado aux = new Empregado();
+        aux.setName("Ulisses");
+        aux.setCargo("DIRETOR");
+        aux.setSalario(15800.00);
+        
+        Departamento dpto = em.find(Departamento.class, 1);
+        aux.setDepartamento(dpto);
+        em.persist(aux);
+        em.flush(); //força que a persistência realizada vá para o banco neste momento.
+
+        assertNotNull(aux.getId());
+        assertEquals(aux.getDepartamento().getName(), "TI");
+    }
     
     @Test
     public void consultDepartamento() throws ParseException {
@@ -51,4 +54,26 @@ public class TesteEmpregado extends Teste{
         assertEquals(1, empregado.getId());
     }
     
+    @Test
+    public void updateEmpregado(){
+        TypedQuery<Empregado> query = em.createNamedQuery("Update.Empregado",
+                Empregado.class);
+        double sal = 4000.00;
+        query.setParameter("salario", sal).setParameter("id", 1);
+        int r = query.executeUpdate();
+        assertEquals(1, r);
+        Empregado empregado = em.find(Empregado.class, 1);
+        em.refresh(empregado);
+        System.out.println(empregado.getSalario());
+        assertTrue(sal == empregado.getSalario());
+    }
+    
+    @Test
+    public void deleteEmpregado(){
+        TypedQuery<Empregado> query = em.createNamedQuery("Delete.Empregado",
+                Empregado.class);
+        query.setParameter("id", 3);
+        int r = query.executeUpdate();
+        assertEquals(1, r);
+    }
 }

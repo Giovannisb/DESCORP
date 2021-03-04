@@ -14,38 +14,31 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 /**
  *
  * @author Giovanni
+ * @author David
  */
 
 @Entity
 @Table(name = "TB_EMPREGADO")
 @NamedQueries(
-    @NameQuery(
-        name = "Update.Empregado",
-        query = "UPDATE TB_EMPREGADO e SET salario = 4000.00 WHERE e.name = "Giovanni" "
-    )
+    {
+        @NamedQuery(
+            name = "Update.Empregado",
+            query = "UPDATE Empregado e SET e.salario = :salario WHERE e.id = :id"
+        ),
 
-    @NameQuery(
-        name = "Delete.Empregado",
-        query = "DELETE FROM TB_EMPREGADO e WHERE e.name = "Aline" "
-    )
+        @NamedQuery(
+            name = "Delete.Empregado",
+            query = "DELETE FROM Empregado e WHERE e.id = :id "
+        )
+    }
 )
-
-// @Entity
-// @Table(name = "TB_EMPREGADO")
-// @NamedQueries(
-//     @NameQuery(
-//         name = "Delete.Empregado",
-//         query = "DELETE FROM TB_EMPREGADO e WHERE e.name = "Aline" "
-//     )
-// )
-
-@Entity
-@Table(name = "TB_EMPREGADO")
 public class Empregado implements Serializable {
     @Id
     @GeneratedValue( strategy= GenerationType.IDENTITY ) 

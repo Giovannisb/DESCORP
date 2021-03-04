@@ -19,6 +19,7 @@ import org.dbunit.operation.DatabaseOperation;
 /**
  *
  * @author Giovanni
+ * @author David
  */
 public class DbUnitUtil {
     private static final String XML_FILE = "/dbunit/dataset.xml";

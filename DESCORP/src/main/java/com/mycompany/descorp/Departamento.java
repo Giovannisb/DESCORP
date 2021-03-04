@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycompany.descorp; 
+package com.mycompany.descorp;
 
 import java.io.Serializable;
 import javax.persistence.Column;
@@ -11,6 +11,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 /**
@@ -23,11 +25,12 @@ import javax.persistence.Table;
 @Table(name = "TB_DEPARTAMENTO")
 @NamedQueries(
     {
-        @NameQuery(
+        @NamedQuery(
             name = "Update.Name",
             query= "UPDATE Departamento d SET d.name = :name WHERE d.id = :id"
-        )
-        @NameQuery(
+        ),
+        
+        @NamedQuery(
             name = "Delete.Departamento",
             query= "DELETE FROM Departamento d WHERE d.id = :id "
         )

@@ -12,6 +12,7 @@ import org.junit.runners.Suite;
 /**
  *
  * @author Giovanni
+ * @author David
  */
 
 @RunWith(Suite.class)

@@ -12,6 +12,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
+import javax.persistence.TypedQuery;
 import org.dbunit.DatabaseUnitException;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -46,23 +47,23 @@ public class TesteDepartamento extends Teste {
         assertEquals("TI", departamento.getName());
         assertEquals(1, departamento.getId());
     }
-
+    
     @Test 
     public void updateDepartamento(){
         TypedQuery<Departamento> q = em.createNamedQuery("Update.Name", Departamento.class);
         String newName = "Tecnologia da Informação";
-        q.setParameter("name", newName);
-        q.setParameter("id", 1);
+        q.setParameter("name", newName).setParameter("id", 1);
         int r = q.executeUpdate();
         assertEquals(1, r);
-        Departamento departamento = em.find(Departamento.class, 1);;
+        Departamento departamento = em.find(Departamento.class, 1);
+        em.refresh(departamento);
         assertEquals(newName, departamento.getName());
     }
 
     @Test 
     public void deleteDepartamento(){
         TypedQuery<Departamento> q = em.createNamedQuery("Delete.Departamento", Departamento.class);
-        q.setParameter("id", 2);
+        q.setParameter("id", 6);
         int r = q.executeUpdate();
         assertEquals(1, r);
     }

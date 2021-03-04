@@ -12,6 +12,7 @@ and open the template in the editor.
     <TB_DEPARTAMENTO NAME="ATENDIMENTO" />
     <TB_DEPARTAMENTO NAME="BACKOFFICE" />
     <TB_DEPARTAMENTO NAME="OPERACOES" />
+    <TB_DEPARTAMENTO NAME="RH" />
     
     <TB_EMPREGADO cargo="DEV" name="Giovanni" salario="4300.21" id_departamento="1"/>
     <TB_EMPREGADO cargo="ANALISTA" name="Marcelo" salario="5000.21" id_departamento="2"/>

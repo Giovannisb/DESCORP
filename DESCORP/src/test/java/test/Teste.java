@@ -19,6 +19,7 @@ import tests.DESCORP.java.DbUnitUtil;
 /**
  *
  * @author Giovanni
+ * @author David
  */
 public abstract class Teste {
     protected static EntityManagerFactory emf;

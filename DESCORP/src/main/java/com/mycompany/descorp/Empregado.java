@@ -10,6 +10,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -62,7 +64,13 @@ public class Empregado implements Serializable {
     private Endereco endereco;
     
     @OneToMany(mappedBy = "empregado", fetch = FetchType.LAZY, cascade=CascadeType.ALL, orphanRemoval = true)
-    private List<Conta> conta;
+    private List<Conta> contas;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name="TB_PROJETO_REL",
+               joinColumns={@JoinColumn(name="PROJETO_ID")},
+               inverseJoinColumns={@JoinColumn(name="EMPREGADO_ID")})
+    private List<Projeto> projetos;
     
    
     public Empregado(int id, 
@@ -116,6 +124,30 @@ public class Empregado implements Serializable {
 
     public void setDepartamento(Departamento departamento) {
         this.departamento = departamento;
+    }
+
+    public List<Conta> getContas() {
+        return contas;
+    }
+    public void setContas(List<Conta> conta) {
+        this.contas = conta;
+    }
+    
+    public void addConta(Conta c) {
+        this.contas.add(c);
+    }
+
+    public Endereco getEndereco() {
+        return endereco;
+    }
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
+    }
+    public List<Projeto> getProjetos() {
+        return projetos;
+    }
+    public void setProjetos(List<Projeto> projetos) {
+        this.projetos = projetos;
     }
 
 }

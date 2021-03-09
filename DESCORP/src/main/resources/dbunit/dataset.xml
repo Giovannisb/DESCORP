@@ -33,11 +33,11 @@
     <TB_CONTA banco="NUBANK" conta="0001" digito="1" agencia="654876547" empregado_id="1"/>
 
     <!--ManyToMany-->
-    <TB_PROJETO name="Site" descricao="site da empresa" />
-    <TB_PROJETO name="API idwall" descricao="consumir consultas de documentos"/>
-    <TB_PROJETO name="relatório cobrancas" descricao="cobrancas dos clientes" />
-    <TB_PROJETO name="validar tarefas" descricao="revisitar atividades dos funcionarios"/>
-    <TB_PROJETO name="metas" descricao="estipular metas para a empresa"/>
+    <TB_PROJETO nome="Site" descricao="site da empresa" />
+    <TB_PROJETO nome="API idwall" descricao="consumir consultas de documentos"/>
+    <TB_PROJETO nome="relatório cobrancas" descricao="cobrancas dos clientes" />
+    <TB_PROJETO nome="validar tarefas" descricao="revisitar atividades dos funcionarios"/>
+    <TB_PROJETO nome="metas" descricao="estipular metas para a empresa"/>
 
     
     <TB_PROJETO_REL id_empregado="1" id_projeto="1"/>

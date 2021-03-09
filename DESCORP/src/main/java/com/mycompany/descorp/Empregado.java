@@ -1,11 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.mycompany.descorp;
 
 import java.io.Serializable;
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -16,9 +13,12 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
+ *
  *
  * @author Giovanni
  * @author David
@@ -57,6 +57,14 @@ public class Empregado implements Serializable {
     @JoinColumn(name = "id_departamento", referencedColumnName = "id")
     private Departamento departamento;
     
+    @OneToOne(fetch = FetchType.LAZY, cascade=CascadeType.ALL)
+    @JoinColumn(name = "endereco_id", referencedColumnName = "id")
+    private Endereco endereco;
+    
+    @OneToMany(mappedBy = "empregado", fetch = FetchType.LAZY, cascade=CascadeType.ALL, orphanRemoval = true)
+    private List<Conta> conta;
+    
+   
     public Empregado(int id, 
     String name, double salario, String cargo){
         super( );

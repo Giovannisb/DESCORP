@@ -8,7 +8,6 @@ package test;
 import com.mycompany.descorp.Departamento;
 import tests.DESCORP.java.DbUnitUtil;
 import com.mycompany.descorp.Empregado;
-import static com.mycompany.descorp.Empregado_.departamento;
 import java.text.ParseException;
 import java.util.List;
 import javax.persistence.EntityManager;

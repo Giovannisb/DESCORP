@@ -1,22 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-
 
 <dataset>
+    <!--ManyToOne-->
     <TB_DEPARTAMENTO NAME="TI" />
-    <TB_DEPARTAMENTO NAME="FINANCEIRO" />
+    <TB_DEPARTAMENTO NAME="FINANCEIRO" /> 
     <TB_DEPARTAMENTO NAME="ATENDIMENTO" />
     <TB_DEPARTAMENTO NAME="BACKOFFICE" />
     <TB_DEPARTAMENTO NAME="OPERACOES" />
     <TB_DEPARTAMENTO NAME="RH" />
     
-    <TB_EMPREGADO cargo="DEV" name="Giovanni" salario="4300.21" id_departamento="1"/>
-    <TB_EMPREGADO cargo="ANALISTA" name="Marcelo" salario="5000.21" id_departamento="2"/>
-    <TB_EMPREGADO cargo="ATENDENTE" name="Aline" salario="1280.90" id_departamento="3"/>
-    <TB_EMPREGADO cargo="SUPERVISOR" name="Paulo" salario="4300.21" id_departamento="4"/>
-    <TB_EMPREGADO cargo="GERENTE" name="Mariana" salario="9300.21" id_departamento="5"/>
+    
+    <TB_EMPREGADO cargo="DEV" name="Giovanni" salario="4300.21" id_departamento="1" id_endereco="1"/>
+    <TB_EMPREGADO cargo="ANALISTA" name="Marcelo" salario="5000.21" id_departamento="2" id_endereco="2"/>
+    <TB_EMPREGADO cargo="ATENDENTE" name="Aline" salario="1280.90" id_departamento="3" id_endereco="3"/>
+    <TB_EMPREGADO cargo="SUPERVISOR" name="Paulo" salario="4300.21" id_departamento="4" id_endereco="4"/>
+    <TB_EMPREGADO cargo="GERENTE" name="Mariana" salario="9300.21" id_departamento="5" id_endereco="5"/>
+
+    <!--OneToOne-->
+    <TB_ENDERECO logradouro="Av. Brasil" numero="64" complemento="Residencial VN" cep="53625-448" cidade="Paulista" estado="PE"/>
+    <TB_ENDERECO logradouro="Rua General Ulysses" numero="123" complemento="" cep="57825-448" cidade="Abreu e Lima" estado="PE"/>
+    <TB_ENDERECO logradouro="Rua Cinco" numero="14" complemento="Apto 10" cep="13248-756" cidade="Olinda" estado="PE"/>
+    <TB_ENDERECO logradouro="Rua Eurico Pfisterer" numero="54" complemento="" cep="17848-776" cidade="Igarassu" estado="PE"/>
+    <TB_ENDERECO logradouro="Av. Barão de Vera Cruz" numero="103" complemento="" cep="15248-354" cidade="Ibura" estado="PE"/>
+
+    <!--OneToMany-->
+    <TB_CONTA banco="ITAU" conta="303539" digito="4" agencia="8302" empregado_id="1"/>
+    <TB_CONTA banco="BRADESCO" conta="3024479" digito="7" agencia="6548" empregado_id="2"/>
+    <TB_CONTA banco="SANTANDER" conta="468742" digito="2" agencia="6548" empregado_id="3"/>
+    <TB_CONTA banco="BANCO DO BRASIL" conta="978794" digito="2" agencia="8575" empregado_id="4"/>
+    <TB_CONTA banco="CAIXA" conta="65498870" digito="7" agencia="654879" empregado_id="5"/>
+    <TB_CONTA banco="SANTANDER" conta="324597" digito="0" agencia="6549" empregado_id="2"/>
+    <TB_CONTA banco="NUBANK" conta="0001" digito="1" agencia="654876547" empregado_id="1"/>
+
+    <!--ManyToMany-->
+    <TB_PROJETO name="Site" descricao="site da empresa" />
+    <TB_PROJETO name="API idwall" descricao="consumir consultas de documentos"/>
+    <TB_PROJETO name="relatório cobrancas" descricao="cobrancas dos clientes" />
+    <TB_PROJETO name="validar tarefas" descricao="revisitar atividades dos funcionarios"/>
+    <TB_PROJETO name="metas" descricao="estipular metas para a empresa"/>
+
+    
+    <TB_PROJETO_REL id_empregado="1" id_projeto="1"/>
+    <TB_PROJETO_REL id_empregado="1" id_projeto="2"/>
+    <TB_PROJETO_REL id_empregado="2" id_projeto="3"/>
+    <TB_PROJETO_REL id_empregado="3" id_projeto="3"/>
+    <TB_PROJETO_REL id_empregado="4" id_projeto="4"/>
+    <TB_PROJETO_REL id_empregado="5" id_projeto="5"/>
+
 </dataset>

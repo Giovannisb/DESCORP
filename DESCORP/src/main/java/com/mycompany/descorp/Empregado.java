@@ -67,9 +67,7 @@ public class Empregado implements Serializable {
     private List<Conta> contas;
 
     @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name="TB_PROJETO_REL",
-               joinColumns={@JoinColumn(name="PROJETO_ID")},
-               inverseJoinColumns={@JoinColumn(name="EMPREGADO_ID")})
+    @JoinTable(name="TB_PROJETO_REL", joinColumns={@JoinColumn(name="PROJETO_ID")}, inverseJoinColumns={@JoinColumn(name="EMPREGADO_ID")})
     private List<Projeto> projetos;
     
    

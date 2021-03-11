@@ -51,7 +51,7 @@ public class Projeto implements Serializable{
     private List<Empregado> empregados;
 
     public Projeto(int id,  String nome, String descricao){
-        super( );
+        super();
         this.id = id;
         this.nome = nome;
         this.descricao = descricao;

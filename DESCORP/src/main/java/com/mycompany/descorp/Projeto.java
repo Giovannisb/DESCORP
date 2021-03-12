@@ -21,12 +21,12 @@ import javax.persistence.NamedQuery;
     {
         @NamedQuery(
             name = "Update.Projeto.nome",
-            query = "UPDATE Projeto p SET p.nome = :nome WHERE c.id = :id"
+            query = "UPDATE Projeto p SET p.nome = :nome WHERE p.id = :id"
         ),
         
         @NamedQuery(
             name = "Update.Projeto.descricao",
-            query = "UPDATE Projeto p SET p.descricao = :descricao WHERE c.id = :id"
+            query = "UPDATE Projeto p SET p.descricao = :descricao WHERE p.id = :id"
         ),
         
         @NamedQuery(
@@ -47,8 +47,8 @@ public class Projeto implements Serializable{
     @Column(name = "descricao", nullable = false)
     private String descricao;
 
-    @ManyToMany(mappedBy = "empregado", cascade = CascadeType.ALL)
-    private List<Empregado> empregados;
+//    @ManyToMany(mappedBy = "empregado", cascade = CascadeType.ALL)
+//    private List<Empregado> empregados;
 
     public Projeto(int id,  String nome, String descricao){
         super();

@@ -55,7 +55,7 @@ public class Empregado implements Serializable {
     @Column(name = "cargo", nullable = false, unique = true)
     private String cargo;
     
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "id_departamento", referencedColumnName = "id")
     private Departamento departamento;
     
@@ -63,14 +63,28 @@ public class Empregado implements Serializable {
     @JoinColumn(name = "endereco_id", referencedColumnName = "id")
     private Endereco endereco;
     
-    @OneToMany(mappedBy = "empregado", fetch = FetchType.LAZY, cascade=CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "empregado", fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Conta> contas;
-
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name="TB_PROJETO_REL", joinColumns={@JoinColumn(name="PROJETO_ID")}, inverseJoinColumns={@JoinColumn(name="EMPREGADO_ID")})
-    private List<Projeto> projetos;
     
-   
+    
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "TB_PROJETO_REL", joinColumns = {
+        @JoinColumn(name = "id_empregado")},
+            inverseJoinColumns = {
+                @JoinColumn(name = "id_projeto")})
+    private List<Projeto> projetos;
+
+    public List<Conta> getContas() {
+        return contas;
+    }
+
+    public void setContas(List<Conta> contas) {
+        this.contas = contas;
+    }
+
+ 
+
     public Empregado(int id, 
     String name, double salario, String cargo){
         super( );
@@ -124,28 +138,10 @@ public class Empregado implements Serializable {
         this.departamento = departamento;
     }
 
-    public List<Conta> getContas() {
-        return contas;
-    }
-    public void setContas(List<Conta> conta) {
-        this.contas = conta;
-    }
-    
-    public void addConta(Conta c) {
-        this.contas.add(c);
-    }
-
     public Endereco getEndereco() {
         return endereco;
     }
     public void setEndereco(Endereco endereco) {
         this.endereco = endereco;
     }
-    public List<Projeto> getProjetos() {
-        return projetos;
-    }
-    public void setProjetos(List<Projeto> projetos) {
-        this.projetos = projetos;
-    }
-
 }

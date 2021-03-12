@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="4" failures="0" name="test.TesteEmpregado" time="0.073" errors="0" skipped="0">
+<testsuite tests="2" failures="0" name="test.TesteEmpregado" time="0.961" errors="2" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.8.0_281\jre\bin"/>
     <property name="java.vm.version" value="25.281-b09"/>
     <property name="java.vm.vendor" value="Oracle Corporation"/>
-    <property name="maven.multiModuleProjectDirectory" value="C:\Users\Giovanni\Documents\NetBeansProjects\DESCORP"/>
+    <property name="maven.multiModuleProjectDirectory" value="C:\Users\Giovanni\Desktop\repositorios\DESCORP\DESCORP"/>
     <property name="java.vendor.url" value="http://java.oracle.com/"/>
     <property name="path.separator" value=";"/>
     <property name="guice.disable.misplaced.annotation.check" value="true"/>
@@ -17,7 +17,7 @@
     <property name="sun.os.patch.level" value=""/>
     <property name="test" value="test.TesteEmpregado"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
-    <property name="user.dir" value="C:\Users\Giovanni\Documents\NetBeansProjects\DESCORP"/>
+    <property name="user.dir" value="C:\Users\Giovanni\Desktop\repositorios\DESCORP\DESCORP"/>
     <property name="java.runtime.version" value="1.8.0_281-b09"/>
     <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
     <property name="java.endorsed.dirs" value="C:\Program Files\Java\jdk1.8.0_281\jre\lib\endorsed"/>
@@ -65,8 +65,128 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="test.TesteEmpregado" name="persistEmpregado" time="0.051"/>
-  <testcase classname="test.TesteEmpregado" name="deleteEmpregado" time="0.008"/>
-  <testcase classname="test.TesteEmpregado" name="consultDepartamento" time="0.005"/>
-  <testcase classname="test.TesteEmpregado" name="updateEmpregado" time="0.009"/>
+  <testcase classname="test.TesteEmpregado" name="test.TesteEmpregado" time="0.48">
+    <error message="
+Exception Description: An exception was thrown while searching for persistence archives with ClassLoader: sun.misc.Launcher$AppClassLoader@42a57993
+Internal Exception: javax.persistence.PersistenceException: Exception [EclipseLink-28018] (Eclipse Persistence Services - 2.7.8.v20201217-ecdf3c32c4): org.eclipse.persistence.exceptions.EntityManagerSetupException
+Exception Description: Predeployment of PersistenceUnit [DESCORP] failed.
+Internal Exception: Exception [EclipseLink-7154] (Eclipse Persistence Services - 2.7.8.v20201217-ecdf3c32c4): org.eclipse.persistence.exceptions.ValidationException
+Exception Description: The attribute [empregados] in entity class [class com.mycompany.descorp.Projeto] has a mappedBy value of [empregado] which does not exist in its owning entity class [class com.mycompany.descorp.Empregado]. If the owning entity class is a @MappedSuperclass, this is invalid, and your attribute should reference the correct subclass." type="Local Exception Stack">Local Exception Stack: 
+Exception [EclipseLink-30005] (Eclipse Persistence Services - 2.7.8.v20201217-ecdf3c32c4): org.eclipse.persistence.exceptions.PersistenceUnitLoadingException
+Exception Description: An exception was thrown while searching for persistence archives with ClassLoader: sun.misc.Launcher$AppClassLoader@42a57993
+Internal Exception: javax.persistence.PersistenceException: Exception [EclipseLink-28018] (Eclipse Persistence Services - 2.7.8.v20201217-ecdf3c32c4): org.eclipse.persistence.exceptions.EntityManagerSetupException
+Exception Description: Predeployment of PersistenceUnit [DESCORP] failed.
+Internal Exception: Exception [EclipseLink-7154] (Eclipse Persistence Services - 2.7.8.v20201217-ecdf3c32c4): org.eclipse.persistence.exceptions.ValidationException
+Exception Description: The attribute [empregados] in entity class [class com.mycompany.descorp.Projeto] has a mappedBy value of [empregado] which does not exist in its owning entity class [class com.mycompany.descorp.Empregado]. If the owning entity class is a @MappedSuperclass, this is invalid, and your attribute should reference the correct subclass.
+	at org.eclipse.persistence.exceptions.PersistenceUnitLoadingException.exceptionSearchingForPersistenceResources(PersistenceUnitLoadingException.java:129)
+	at org.eclipse.persistence.jpa.PersistenceProvider.createEntityManagerFactoryImpl(PersistenceProvider.java:118)
+	at org.eclipse.persistence.jpa.PersistenceProvider.createEntityManagerFactory(PersistenceProvider.java:191)
+	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:80)
+	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:55)
+	at test.Teste.setUpClass(Teste.java:31)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:59)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:56)
+	at org.junit.internal.runners.statements.RunBefores.invokeMethod(RunBefores.java:33)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:24)
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)
+	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:413)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:252)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:141)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:112)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.apache.maven.surefire.util.ReflectionUtils.invokeMethodWithArray(ReflectionUtils.java:189)
+	at org.apache.maven.surefire.booter.ProviderFactory$ProviderProxy.invoke(ProviderFactory.java:165)
+	at org.apache.maven.surefire.booter.ProviderFactory.invokeProvider(ProviderFactory.java:85)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:115)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:75)
+Caused by: javax.persistence.PersistenceException: Exception [EclipseLink-28018] (Eclipse Persistence Services - 2.7.8.v20201217-ecdf3c32c4): org.eclipse.persistence.exceptions.EntityManagerSetupException
+Exception Description: Predeployment of PersistenceUnit [DESCORP] failed.
+Internal Exception: Exception [EclipseLink-7154] (Eclipse Persistence Services - 2.7.8.v20201217-ecdf3c32c4): org.eclipse.persistence.exceptions.ValidationException
+Exception Description: The attribute [empregados] in entity class [class com.mycompany.descorp.Projeto] has a mappedBy value of [empregado] which does not exist in its owning entity class [class com.mycompany.descorp.Empregado]. If the owning entity class is a @MappedSuperclass, this is invalid, and your attribute should reference the correct subclass.
+	at org.eclipse.persistence.internal.jpa.EntityManagerSetupImpl.createPredeployFailedPersistenceException(EntityManagerSetupImpl.java:2109)
+	at org.eclipse.persistence.internal.jpa.EntityManagerSetupImpl.predeploy(EntityManagerSetupImpl.java:2085)
+	at org.eclipse.persistence.internal.jpa.deployment.JPAInitializer.callPredeploy(JPAInitializer.java:104)
+	at org.eclipse.persistence.jpa.PersistenceProvider.createEntityManagerFactoryImpl(PersistenceProvider.java:107)
+	... 28 more
+Caused by: Exception [EclipseLink-28018] (Eclipse Persistence Services - 2.7.8.v20201217-ecdf3c32c4): org.eclipse.persistence.exceptions.EntityManagerSetupException
+Exception Description: Predeployment of PersistenceUnit [DESCORP] failed.
+Internal Exception: Exception [EclipseLink-7154] (Eclipse Persistence Services - 2.7.8.v20201217-ecdf3c32c4): org.eclipse.persistence.exceptions.ValidationException
+Exception Description: The attribute [empregados] in entity class [class com.mycompany.descorp.Projeto] has a mappedBy value of [empregado] which does not exist in its owning entity class [class com.mycompany.descorp.Empregado]. If the owning entity class is a @MappedSuperclass, this is invalid, and your attribute should reference the correct subclass.
+	at org.eclipse.persistence.exceptions.EntityManagerSetupException.predeployFailed(EntityManagerSetupException.java:233)
+	... 32 more
+Caused by: Exception [EclipseLink-7154] (Eclipse Persistence Services - 2.7.8.v20201217-ecdf3c32c4): org.eclipse.persistence.exceptions.ValidationException
+Exception Description: The attribute [empregados] in entity class [class com.mycompany.descorp.Projeto] has a mappedBy value of [empregado] which does not exist in its owning entity class [class com.mycompany.descorp.Empregado]. If the owning entity class is a @MappedSuperclass, this is invalid, and your attribute should reference the correct subclass.
+	at org.eclipse.persistence.exceptions.ValidationException.noMappedByAttributeFound(ValidationException.java:1376)
+	at org.eclipse.persistence.internal.jpa.metadata.accessors.mappings.RelationshipAccessor.getOwningMapping(RelationshipAccessor.java:491)
+	at org.eclipse.persistence.internal.jpa.metadata.accessors.mappings.ManyToManyAccessor.process(ManyToManyAccessor.java:156)
+	at org.eclipse.persistence.internal.jpa.metadata.MetadataProject.processNonOwningRelationshipAccessors(MetadataProject.java:1652)
+	at org.eclipse.persistence.internal.jpa.metadata.MetadataProject.processStage3(MetadataProject.java:1941)
+	at org.eclipse.persistence.internal.jpa.metadata.MetadataProcessor.processORMMetadata(MetadataProcessor.java:584)
+	at org.eclipse.persistence.internal.jpa.deployment.PersistenceUnitProcessor.processORMetadata(PersistenceUnitProcessor.java:629)
+	at org.eclipse.persistence.internal.jpa.EntityManagerSetupImpl.predeploy(EntityManagerSetupImpl.java:2006)
+	... 30 more
+</error>
+    <system-out>[EL Fine]: server: 2021-03-11 20:34:22.693--Thread(Thread[main,5,main])--Configured server platform: org.eclipse.persistence.platform.server.NoServerPlatform
+[EL Config]: metadata: 2021-03-11 20:34:22.795--ServerSession(1765250898)--Thread(Thread[main,5,main])--The access type for the persistent class [class com.mycompany.descorp.Conta] is set to [FIELD].
+[EL Config]: metadata: 2021-03-11 20:34:22.808--ServerSession(1765250898)--Thread(Thread[main,5,main])--The target entity (reference) class for the one to one mapping element [field empregado] is being defaulted to: class com.mycompany.descorp.Empregado.
+[EL Config]: metadata: 2021-03-11 20:34:22.813--ServerSession(1765250898)--Thread(Thread[main,5,main])--The access type for the persistent class [class com.mycompany.descorp.Departamento] is set to [FIELD].
+[EL Config]: metadata: 2021-03-11 20:34:22.813--ServerSession(1765250898)--Thread(Thread[main,5,main])--The access type for the persistent class [class com.mycompany.descorp.Projeto] is set to [FIELD].
+[EL Config]: metadata: 2021-03-11 20:34:22.816--ServerSession(1765250898)--Thread(Thread[main,5,main])--The target entity (reference) class for the many to many mapping element [field empregados] is being defaulted to: class com.mycompany.descorp.Empregado.
+[EL Config]: metadata: 2021-03-11 20:34:22.817--ServerSession(1765250898)--Thread(Thread[main,5,main])--The access type for the persistent class [class com.mycompany.descorp.Endereco] is set to [FIELD].
+[EL Config]: metadata: 2021-03-11 20:34:22.818--ServerSession(1765250898)--Thread(Thread[main,5,main])--The access type for the persistent class [class com.mycompany.descorp.Empregado] is set to [FIELD].
+[EL Config]: metadata: 2021-03-11 20:34:22.818--ServerSession(1765250898)--Thread(Thread[main,5,main])--The target entity (reference) class for the one to one mapping element [field endereco] is being defaulted to: class com.mycompany.descorp.Endereco.
+[EL Config]: metadata: 2021-03-11 20:34:22.818--ServerSession(1765250898)--Thread(Thread[main,5,main])--The target entity (reference) class for the many to one mapping element [field departamento] is being defaulted to: class com.mycompany.descorp.Departamento.
+[EL Config]: metadata: 2021-03-11 20:34:22.82--ServerSession(1765250898)--Thread(Thread[main,5,main])--The target entity (reference) class for the many to many mapping element [field projetos] is being defaulted to: class com.mycompany.descorp.Projeto.
+[EL Config]: metadata: 2021-03-11 20:34:22.82--ServerSession(1765250898)--Thread(Thread[main,5,main])--The target entity (reference) class for the one to many mapping element [field contas] is being defaulted to: class com.mycompany.descorp.Conta.
+[EL Config]: metadata: 2021-03-11 20:34:22.82--ServerSession(1765250898)--Thread(Thread[main,5,main])--The alias name for the entity class [class com.mycompany.descorp.Conta] is being defaulted to: Conta.
+[EL Config]: metadata: 2021-03-11 20:34:22.833--ServerSession(1765250898)--Thread(Thread[main,5,main])--The column name for element [id] is being defaulted to: ID.
+[EL Config]: metadata: 2021-03-11 20:34:22.833--ServerSession(1765250898)--Thread(Thread[main,5,main])--The alias name for the entity class [class com.mycompany.descorp.Departamento] is being defaulted to: Departamento.
+[EL Config]: metadata: 2021-03-11 20:34:22.834--ServerSession(1765250898)--Thread(Thread[main,5,main])--The column name for element [id] is being defaulted to: ID.
+[EL Config]: metadata: 2021-03-11 20:34:22.834--ServerSession(1765250898)--Thread(Thread[main,5,main])--The alias name for the entity class [class com.mycompany.descorp.Projeto] is being defaulted to: Projeto.
+[EL Config]: metadata: 2021-03-11 20:34:22.834--ServerSession(1765250898)--Thread(Thread[main,5,main])--The column name for element [id] is being defaulted to: ID.
+[EL Config]: metadata: 2021-03-11 20:34:22.834--ServerSession(1765250898)--Thread(Thread[main,5,main])--The alias name for the entity class [class com.mycompany.descorp.Endereco] is being defaulted to: Endereco.
+[EL Config]: metadata: 2021-03-11 20:34:22.835--ServerSession(1765250898)--Thread(Thread[main,5,main])--The column name for element [id] is being defaulted to: ID.
+[EL Config]: metadata: 2021-03-11 20:34:22.835--ServerSession(1765250898)--Thread(Thread[main,5,main])--The alias name for the entity class [class com.mycompany.descorp.Empregado] is being defaulted to: Empregado.
+[EL Config]: metadata: 2021-03-11 20:34:22.835--ServerSession(1765250898)--Thread(Thread[main,5,main])--The column name for element [id] is being defaulted to: ID.
+[EL Config]: metadata: 2021-03-11 20:34:22.853--ServerSession(1765250898)--Thread(Thread[main,5,main])--The source primary key column name for the many to many mapping [field projetos] is being defaulted to: ID.
+[EL Config]: metadata: 2021-03-11 20:34:22.853--ServerSession(1765250898)--Thread(Thread[main,5,main])--The target primary key column name for the many to many mapping [field projetos] is being defaulted to: ID.
+</system-out>
+  </testcase>
+  <testcase classname="test.TesteEmpregado" name="test.TesteEmpregado" time="0.481">
+    <error type="java.lang.NullPointerException">java.lang.NullPointerException
+	at test.Teste.tearDownClass(Teste.java:37)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:59)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:56)
+	at org.junit.internal.runners.statements.RunAfters.invokeMethod(RunAfters.java:46)
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:33)
+	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:413)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:252)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:141)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:112)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.apache.maven.surefire.util.ReflectionUtils.invokeMethodWithArray(ReflectionUtils.java:189)
+	at org.apache.maven.surefire.booter.ProviderFactory$ProviderProxy.invoke(ProviderFactory.java:165)
+	at org.apache.maven.surefire.booter.ProviderFactory.invokeProvider(ProviderFactory.java:85)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:115)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:75)
+</error>
+  </testcase>
 </testsuite>

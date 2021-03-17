@@ -1,3 +1,13 @@
-com\mycompany\descorp\TesteUsuario.class
-com\mycompany\descorp\Usuario.class
-com\mycompany\descorp\Usuario_.class
+com\mycompany\descorp\Conta_.class
+com\mycompany\descorp\RelProjeto.class
+com\mycompany\descorp\Endereco_.class
+com\mycompany\descorp\Projeto_.class
+com\mycompany\descorp\RelProjeto_.class
+com\mycompany\descorp\Empregado.class
+com\mycompany\descorp\Empregado_.class
+com\mycompany\descorp\Departamento_.class
+com\mycompany\descorp\Endereco.class
+main\App.class
+com\mycompany\descorp\Departamento.class
+com\mycompany\descorp\Conta.class
+com\mycompany\descorp\Projeto.class

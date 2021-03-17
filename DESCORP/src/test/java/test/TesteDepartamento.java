@@ -5,19 +5,11 @@
  */
 package test;
 
-import tests.DESCORP.java.DbUnitUtil;
+import tests.DESCORP.java.Teste;
 import com.mycompany.descorp.Departamento;
 import java.text.ParseException;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
-import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
-import org.dbunit.DatabaseUnitException;
-import org.junit.After;
-import org.junit.AfterClass;
 import static org.junit.Assert.*;
-import org.junit.Before;
 import org.junit.Test;
 
 
@@ -30,7 +22,7 @@ import org.junit.Test;
 public class TesteDepartamento extends Teste {
    
     @Test
-    public void persistDepartamento() {
+    public void createDepartamento() {
         Departamento aux = new Departamento();
         aux.setName("VENDAS");
         em.persist(aux);
@@ -40,7 +32,7 @@ public class TesteDepartamento extends Teste {
     }
     
     @Test
-    public void consultDepartamento() throws ParseException {
+    public void readDepartamento() throws ParseException {
         Departamento departamento;
         departamento = em.find(Departamento.class, 1);
 

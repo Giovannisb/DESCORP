@@ -1,6 +1,7 @@
 package com.mycompany.descorp;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -10,14 +11,17 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+import org.hibernate.validator.constraints.br.CPF;
 
 /**
  *
@@ -46,35 +50,43 @@ public class Empregado implements Serializable {
     @GeneratedValue( strategy= GenerationType.IDENTITY ) 
     private int id;
     
-    @Column(name = "name", nullable = false)
+    @Column(name = "name")
+    @NotBlank
+    @Size(min = 1, max = 30)
+    @Pattern(regexp= "\\p{Upper}{1}\\p{Lower}+", message = "com.mycompany.descorp.Empregado.name")
     private String name;
     
-    @Column(name = "salario", nullable = false)
+    @Column(name = "salario")
+    @NotBlank
     private double salario;
     
-    @Column(name = "cargo", nullable = false, unique = true)
+    @Column(name = "cargo")
+    @NotBlank
+    @Size(min = 2, max = 15)
     private String cargo;
     
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @Column(name ="cpf", nullable =false, unique= true)
+    @CPF
+    private String cpf;
+    
+    @Column(name = "email")
+    @Email
+    private String email;
+  
+    
+    @ManyToOne(fetch = FetchType.LAZY, optional = false, cascade = CascadeType.ALL)
     @JoinColumn(name = "id_departamento", referencedColumnName = "id")
     private Departamento departamento;
     
     @OneToOne(fetch = FetchType.LAZY, cascade=CascadeType.ALL)
-    @JoinColumn(name = "endereco_id", referencedColumnName = "id")
+    @JoinColumn(name = "id_endereco", referencedColumnName = "id")
     private Endereco endereco;
+   
     
-    @OneToMany(mappedBy = "empregado", fetch = FetchType.LAZY,
-            cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Conta> contas;
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "empregado")
+    private List<Conta> contas = new ArrayList<>();
     
     
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "TB_PROJETO_REL", joinColumns = {
-        @JoinColumn(name = "id_empregado")},
-            inverseJoinColumns = {
-                @JoinColumn(name = "id_projeto")})
-    private List<Projeto> projetos;
-
     public List<Conta> getContas() {
         return contas;
     }
@@ -83,7 +95,6 @@ public class Empregado implements Serializable {
         this.contas = contas;
     }
 
- 
 
     public Empregado(int id, 
     String name, double salario, String cargo){

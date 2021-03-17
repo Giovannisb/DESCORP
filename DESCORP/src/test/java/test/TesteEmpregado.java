@@ -1,25 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package test;
 
+import tests.DESCORP.java.Teste;
 import com.mycompany.descorp.Departamento;
-import tests.DESCORP.java.DbUnitUtil;
 import com.mycompany.descorp.Empregado;
+import com.mycompany.descorp.Endereco;
 import java.text.ParseException;
-import java.util.List;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
-import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
-import org.dbunit.DatabaseUnitException;
-import org.junit.After;
-import org.junit.AfterClass;
 import static org.junit.Assert.*;
-import org.junit.Before;
 import org.junit.Test;
 
 /**
@@ -29,8 +16,10 @@ import org.junit.Test;
  */
 public class TesteEmpregado extends Teste{
     @Test
-    public void persistEmpregado() {
+    public void createEmpregado() {
         Empregado aux = new Empregado();
+        Endereco end = em.find(Endereco.class, 3);
+        aux.setEndereco(end);
         aux.setName("Ulisses");
         aux.setCargo("DIRETOR");
         aux.setSalario(15800.00);
@@ -39,13 +28,13 @@ public class TesteEmpregado extends Teste{
         aux.setDepartamento(dpto);
         em.persist(aux);
         em.flush(); //força que a persistência realizada vá para o banco neste momento.
-
+        System.out.println("=====> "+aux.getName());
         assertNotNull(aux.getId());
         assertEquals(aux.getDepartamento().getName(), "TI");
     }
     
     @Test
-    public void consultDepartamento() throws ParseException {
+    public void readDepartamento() throws ParseException {
         Empregado empregado;
         empregado = em.find(Empregado.class, 1);
 
@@ -69,10 +58,17 @@ public class TesteEmpregado extends Teste{
     
     @Test
     public void deleteEmpregado(){
-        TypedQuery<Empregado> query = em.createNamedQuery("Delete.Empregado",
-                Empregado.class);
-        query.setParameter("id", 3);
-        int r = query.executeUpdate();
-        assertEquals(1, r);
+        int idtoremove = 4;
+     
+        TypedQuery<Empregado> query = em.createQuery("SELECT e FROM Empregado e WHERE e.id = :id", Empregado.class);
+        query.setParameter("id", idtoremove);
+        
+        query.getResultStream().forEach(em::remove);
+        
+        Empregado empregado;
+        empregado = em.find(Empregado.class, idtoremove);
+        
+        assertNull(empregado);
+        
     }
 }

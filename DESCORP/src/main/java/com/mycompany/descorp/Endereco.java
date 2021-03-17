@@ -9,6 +9,9 @@ import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
+import validadores.ValidaEstadoAnnotation;
 
 /**
 
@@ -35,28 +38,36 @@ import javax.persistence.Table;
         )
     }
 )
-//logradouro="Av. Brasil" numero="64" complemento="Residencial VN" cep="53625-448" cidade="Paulista" estado="PE"
+
 public class Endereco implements Serializable {
     @Id
     @GeneratedValue( strategy= GenerationType.IDENTITY ) 
     private int id;
         
     @Column(name = "cep", nullable = false, unique = true)
+    @NotBlank
+    @Pattern(regexp = "[0-90]{2}.[0-9]{3}-[0-9]{3}", message = "{com.mycompany.descorp.Endereco.cep}")
     private String cep;
 
     @Column(name = "logradouro", nullable = false)
+    @NotBlank
     private String logradouro;
     
     @Column(name = "numero", nullable = false)
+    @NotBlank
     private int numero;
     
-    @Column(name = "complemento", nullable = false, unique = true)
+    @Column(name = "complemento", nullable = false)
+    @NotBlank
     private String complemento;
     
-    @Column(name = "cidade", nullable = false, unique = true)
+    @Column(name = "cidade", nullable = false)
+    @NotBlank
     private String cidade;
     
-    @Column(name = "estado", nullable = false, unique = true)
+    @Column(name = "estado", nullable = false)
+    @ValidaEstadoAnnotation
+    @NotBlank
     private String estado;
     
     public Endereco(int id,  String cep, String logradouro, int numero, String complemento, String cidade, String estado){

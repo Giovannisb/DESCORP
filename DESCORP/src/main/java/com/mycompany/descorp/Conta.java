@@ -1,10 +1,8 @@
 package com.mycompany.descorp;
 
 import java.io.Serializable;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -12,8 +10,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "TB_CONTA")
@@ -51,21 +50,27 @@ public class Conta implements Serializable {
     private int id;
 
     @Column(name = "banco", nullable = false)
+    @Size(min = 2, max = 15)
+    @NotBlank
     private String banco;
     
     @Column(name = "conta", nullable = false)
+    @NotBlank
     private String conta;
     
-    @Column(name = "digito", nullable = false, unique = true)
+    @Column(name = "digito", nullable = false)
+    @Size(max = 3)
+    @NotBlank
     private int digito;
     
     @Column(name = "agencia", nullable = false)
+    @NotBlank
     private String agencia;
     
-    @ManyToOne(fetch = FetchType.LAZY, cascade=CascadeType.ALL)
-    @JoinColumn(name = "empregado_id", referencedColumnName = "id")
-    private Empregado empregado;
 
+    @ManyToOne
+    @JoinColumn(name = "id_empregado")
+    private Empregado empregado;
 
     public Conta(int id, String banco, String conta, int digito, String agencia){
         super();

@@ -15,6 +15,8 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 /**
  *
@@ -43,9 +45,11 @@ public class Departamento implements Serializable {
     private int id;
     
     @Column(name = "NAME", nullable = false, unique = true)
+    @NotBlank
+    @Size(min = 2, max = 15)
     private String name;
     
-    @OneToMany(mappedBy = "empregado", fetch = FetchType.LAZY,
+    @OneToMany(mappedBy = "departamento", fetch = FetchType.LAZY,
             cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Empregado> empregados = new ArrayList<>();
 

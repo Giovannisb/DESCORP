@@ -4,6 +4,7 @@ com\mycompany\descorp\Endereco_.class
 com\mycompany\descorp\Projeto_.class
 com\mycompany\descorp\RelProjeto_.class
 com\mycompany\descorp\Empregado.class
+validadores\ValidaEstadoAnnotation.class
 com\mycompany\descorp\Empregado_.class
 com\mycompany\descorp\Departamento_.class
 com\mycompany\descorp\Endereco.class
@@ -11,3 +12,4 @@ main\App.class
 com\mycompany\descorp\Departamento.class
 com\mycompany\descorp\Conta.class
 com\mycompany\descorp\Projeto.class
+validadores\ValidaEstado.class

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="4" failures="0" name="test.TesteDepartamento" time="0.268" errors="0" skipped="0">
+<testsuite tests="4" failures="0" name="test.TesteProjeto" time="0" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="java.vm.version" value="14.0.2+12-46"/>
@@ -59,8 +59,8 @@
     <property name="sun.cpu.endian" value="little"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="test.TesteDepartamento" name="createDepartamento" time="0.217"/>
-  <testcase classname="test.TesteDepartamento" name="readDepartamento" time="0.022"/>
-  <testcase classname="test.TesteDepartamento" name="deleteDepartamento" time="0.016"/>
-  <testcase classname="test.TesteDepartamento" name="updateDepartamento" time="0.013"/>
+  <testcase classname="test.TesteProjeto" name="updateProjeto" time="0"/>
+  <testcase classname="test.TesteProjeto" name="readProjeto" time="0"/>
+  <testcase classname="test.TesteProjeto" name="deleteProjeto" time="0"/>
+  <testcase classname="test.TesteProjeto" name="createProjeto" time="0"/>
 </testsuite>

@@ -22,6 +22,8 @@ public class TesteEmpregado extends Teste{
         aux.setEndereco(end);
         aux.setName("Ulisses");
         aux.setCargo("DIRETOR");
+        aux.setCpf("653.496.510-05");
+        aux.setEmail("email@email.com");
         aux.setSalario(15800.00);
         
         Departamento dpto = em.find(Departamento.class, 1);

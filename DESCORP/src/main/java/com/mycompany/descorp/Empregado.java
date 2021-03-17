@@ -57,7 +57,6 @@ public class Empregado implements Serializable {
     private String name;
     
     @Column(name = "salario")
-    @NotBlank
     private double salario;
     
     @Column(name = "cargo")
@@ -140,7 +139,22 @@ public class Empregado implements Serializable {
     public void setCargo(String cargo) {
         this.cargo = cargo;
     }
+    public String getCpf() {
+        return cpf;
+    }
 
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+    
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+    
     public Departamento getDepartamento() {
         return departamento;
     }

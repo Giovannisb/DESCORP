@@ -11,6 +11,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -85,6 +87,13 @@ public class Empregado implements Serializable {
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "empregado")
     private List<Conta> contas = new ArrayList<>();
     
+    
+    @ManyToMany(cascade=CascadeType.ALL)
+    @JoinTable(
+        joinColumns={@JoinColumn(name="id_empregado")},
+        inverseJoinColumns={@JoinColumn(name="id_projeto")}
+    )
+    private List<Projeto> projetos;
     
     public List<Conta> getContas() {
         return contas;

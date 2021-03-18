@@ -10,11 +10,11 @@
     <TB_DEPARTAMENTO NAME="RH" />
     
     <!--OneToOne-->
-    <TB_ENDERECO logradouro="Av. Brasil"            numero="64"     complemento="Residencial VN"    cep="53625-448" cidade="Paulista"       estado="PE"/>
-    <TB_ENDERECO logradouro="Rua General Ulysses"   numero="123"    complemento="Apto 13"           cep="57825-448" cidade="Abreu e Lima"   estado="PE"/>
-    <TB_ENDERECO logradouro="Rua Cinco"             numero="14"     complemento="Apto 10"           cep="13248-756" cidade="Olinda"         estado="PE"/>
-    <TB_ENDERECO logradouro="Rua Eurico Pfisterer"  numero="54"     complemento="casa 10"           cep="17848-776" cidade="Igarassu"       estado="PE"/>
-    <TB_ENDERECO logradouro="Av. Vera Cruz"         numero="103"    complemento="casa 11"           cep="15248-354" cidade="Ibura"          estado="PE"/>
+    <TB_ENDERECO logradouro="Av. Brasil"            numero="64"     complemento="Residencial VN"    cep="53.625-448" cidade="Paulista"       estado="PE"/>
+    <TB_ENDERECO logradouro="Rua General Ulysses"   numero="123"    complemento="Apto 13"           cep="57.825-448" cidade="Abreu e Lima"   estado="PE"/>
+    <TB_ENDERECO logradouro="Rua Cinco"             numero="14"     complemento="Apto 10"           cep="13.248-756" cidade="Olinda"         estado="PE"/>
+    <TB_ENDERECO logradouro="Rua Eurico Pfisterer"  numero="54"     complemento="casa 10"           cep="17.848-776" cidade="Igarassu"       estado="PE"/>
+    <TB_ENDERECO logradouro="Av. Vera Cruz"         numero="103"    complemento="casa 11"           cep="15.248-354" cidade="Ibura"          estado="PE"/>
 
     
     

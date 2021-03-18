@@ -10,6 +10,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import validadores.ValidaEstadoAnnotation;
 
@@ -25,12 +26,12 @@ import validadores.ValidaEstadoAnnotation;
 @NamedQueries(
     {
         @NamedQuery(
-            name = "Update.Endereco.numero",
-            query = "UPDATE Endereco e SET e.numero = :numero WHERE e.id = :id"
+            name = "Update.Endereco.cep",
+            query = "UPDATE Endereco e SET e.cep = :cep WHERE e.id = :id"
         ),
         @NamedQuery(
-            name = "Update.Endereco.complemento",
-            query = "UPDATE Endereco e SET e.complemento = :complemento WHERE e.id = :id"
+            name = "Update.Endereco.estado",
+            query = "UPDATE Endereco e SET e.estado = :estado WHERE e.id = :id"
         ),
         @NamedQuery(
             name = "Delete.Endereco",
@@ -44,7 +45,7 @@ public class Endereco implements Serializable {
     @GeneratedValue( strategy= GenerationType.IDENTITY ) 
     private int id;
         
-    @Column(name = "cep", nullable = false, unique = true)
+    @Column(name = "cep", nullable = false)
     @NotBlank
     @Pattern(regexp = "[0-90]{2}.[0-9]{3}-[0-9]{3}", message = "{com.mycompany.descorp.Endereco.cep}")
     private String cep;
@@ -54,7 +55,7 @@ public class Endereco implements Serializable {
     private String logradouro;
     
     @Column(name = "numero", nullable = false)
-    @NotBlank
+    @NotNull
     private int numero;
     
     @Column(name = "complemento", nullable = false)

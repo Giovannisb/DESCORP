@@ -1,15 +1,20 @@
 package com.mycompany.descorp;
 
+import java.awt.print.Book;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 
 @Entity
@@ -46,8 +51,9 @@ public class Projeto implements Serializable{
     @NotBlank
     private String descricao;
 
-//    @ManyToMany(mappedBy = "empregado", cascade = CascadeType.ALL)
-//    private List<Empregado> empregados;
+    @ManyToMany(mappedBy="projetos")
+    @Size(min = 1)
+    private List<Empregado> empregados = new ArrayList<Empregado>();
 
     public Projeto(int id,  String nome, String descricao){
         super();
@@ -60,6 +66,12 @@ public class Projeto implements Serializable{
         super();
     }
 
+    public int getId(){
+        return this.id;
+    }
+    public void setId(int newId){
+        this.id = newId;
+    }
     public String getNome() {
         return nome;
     }
@@ -73,5 +85,12 @@ public class Projeto implements Serializable{
 
     public void setDescricao(String descricao) {
         this.descricao = descricao;
+    }
+        public List<Empregado> getEmpregados() {
+        return empregados;
+    }
+
+    public void setEmpregados(List<Empregado> empregados) {
+        this.empregados = empregados;
     }
 }

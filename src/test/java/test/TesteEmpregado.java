@@ -54,14 +54,14 @@ public class TesteEmpregado extends Teste{
         assertEquals(1, r);
         Empregado empregado = em.find(Empregado.class, 1);
         em.refresh(empregado);
-        System.out.println(empregado.getSalario());
+
         assertTrue(sal == empregado.getSalario());
     }
     
     @Test
     public void deleteEmpregado(){
+        
         int idtoremove = 4;
-     
         TypedQuery<Empregado> query = em.createQuery("SELECT e FROM Empregado e WHERE e.id = :id", Empregado.class);
         query.setParameter("id", idtoremove);
         
@@ -71,6 +71,5 @@ public class TesteEmpregado extends Teste{
         empregado = em.find(Empregado.class, idtoremove);
         
         assertNull(empregado);
-        
     }
 }

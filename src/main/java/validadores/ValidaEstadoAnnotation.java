@@ -14,7 +14,7 @@ import javax.validation.Payload;
 @Constraint(validatedBy = ValidaEstado.class)
 @Documented
 public @interface ValidaEstadoAnnotation {
-    String message() default "{exemplo.jpa.Endereco.estado}";
+    String message() default "{com.mycompany.descorp.Endereco.estado}";
     Class<?>[] groups() default {};
     Class<? extends Payload>[] payload() default {};
 }

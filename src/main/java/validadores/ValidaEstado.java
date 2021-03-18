@@ -12,7 +12,7 @@ import javax.validation.ConstraintValidatorContext;
 public class ValidaEstado implements ConstraintValidator<ValidaEstadoAnnotation, String>{
     private List<String> estados;
     
-    public void initialize(ValidaEstado validaEstado) {
+    public void initialize(ValidaEstadoAnnotation validaEstado) {
         this.estados = new ArrayList<>();
         this.estados.add("AC");
         this.estados.add("AL");

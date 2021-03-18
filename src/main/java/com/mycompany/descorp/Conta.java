@@ -19,28 +19,14 @@ import javax.validation.constraints.Size;
 @NamedQueries(
     {
         @NamedQuery(
-            name = "Update.Conta.banco",
-            query = "UPDATE Conta c SET c.banco = :banco WHERE c.id = :id"
-        ),
-        
-        @NamedQuery(
-            name = "Update.Conta.conta",
-            query = "UPDATE Conta c SET c.conta = :conta WHERE c.id = :id"
-        ),
-        
-        @NamedQuery(
-            name = "Update.Conta.digito",
-            query = "UPDATE Conta c SET c.digito = :digito WHERE c.id = :id"
-        ),
-        
-        @NamedQuery(
-            name = "Update.Conta.agencia",
-            query = "UPDATE Conta c SET c.agencia = :agencia WHERE c.id = :id"
-        ),
-        
-        @NamedQuery(
-            name = "Delete.Conta",
-            query = "DELETE FROM Conta c WHERE c.id = :id "
+            name = "Update.Conta",
+            query = "UPDATE " + 
+            "Conta c SET " + 
+            "c.banco = :banco, " + 
+            "c.conta = :conta, " +
+            "c.digito = :digito, " +
+            "c.agencia = :agencia " +
+            "WHERE c.id = :id"
         )
     }
 )
@@ -59,8 +45,6 @@ public class Conta implements Serializable {
     private String conta;
     
     @Column(name = "digito", nullable = false)
-    @Size(max = 3)
-    @NotBlank
     private int digito;
     
     @Column(name = "agencia", nullable = false)

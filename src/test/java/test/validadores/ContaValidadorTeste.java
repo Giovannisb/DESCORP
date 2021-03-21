@@ -7,6 +7,7 @@ import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
 import org.hamcrest.CoreMatchers;
 import static org.hamcrest.CoreMatchers.startsWith;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
 import org.junit.Test;
@@ -49,12 +50,9 @@ public class ContaValidadorTeste extends Teste {
             });
 
             assertEquals(4, constraintViolations.size());
-            assertEquals(c.getId(), 0);
+            assertNull(c.getId());
             throw e;
         }
-
-    
-    
     }
     
     @Test(expected = ConstraintViolationException.class)
@@ -77,6 +75,7 @@ public class ContaValidadorTeste extends Teste {
         }
 
     }
+    
     @Test(expected = ConstraintViolationException.class)
     public void atualizarContaSenhaInvalida() {
         
@@ -97,5 +96,4 @@ public class ContaValidadorTeste extends Teste {
         }
 
     }
-    
 }

@@ -34,7 +34,7 @@ public abstract class Usuario implements Serializable{
     
     @Id
     @GeneratedValue( strategy= GenerationType.IDENTITY ) 
-    protected int id;
+    protected Long id;
     
     @Column(name = "name")
     @NotBlank
@@ -55,13 +55,25 @@ public abstract class Usuario implements Serializable{
     @JoinColumn(name = "id_endereco", referencedColumnName = "id")
     @NotNull
     protected Endereco endereco;
+    
+    
    
 
-    public int getId() {
+    public Endereco getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(Endereco e) {
+        this.endereco= e;
+    }
+    
+   
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -87,6 +99,21 @@ public abstract class Usuario implements Serializable{
 
     public void setEmail(String email) {
         this.email = email;
+    }
+     @Override
+    public int hashCode() {
+        int hash = 0;
+        hash += (this.id != null ? id.hashCode() : 0);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        if (!(object instanceof Usuario)) {
+            return false;
+        }
+        Usuario other = (Usuario) object;
+        return !((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id)));
     }
 
 }

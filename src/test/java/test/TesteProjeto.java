@@ -25,9 +25,9 @@ public class TesteProjeto extends Teste{
     public void createProjeto() {
 
         Projeto p = new Projeto();
-        Empregado emp1 = em.find(Empregado.class, 1);
-        Empregado emp2 = em.find(Empregado.class, 2);
-        Empregado emp3 = em.find(Empregado.class, 3);
+        Empregado emp1 = em.find(Empregado.class, 1L);
+        Empregado emp2 = em.find(Empregado.class, 2L);
+        Empregado emp3 = em.find(Empregado.class, 3L);
 
         List<Empregado> empregadosProjeto = new ArrayList<>();
         empregadosProjeto.add(emp1);
@@ -47,9 +47,9 @@ public class TesteProjeto extends Teste{
     @Test
     public void readProjeto() throws ParseException { 
 
-        Projeto p = em.find(Projeto.class, 1);
+        Projeto p = em.find(Projeto.class, 1L);
         assertEquals("Site", p.getNome());
-        assertEquals(1, p.getId());
+        assertTrue(1L == p.getId());
 
     }
     
@@ -58,7 +58,7 @@ public class TesteProjeto extends Teste{
         
         TypedQuery<Projeto> query = em.createNamedQuery("Update.Projeto.nome",Projeto.class);
         String newName = "Construção de análises";
-        int idp = 5;
+        Long idp = 5L;
         query.setParameter("nome", newName).setParameter("id", idp);
         int r = query.executeUpdate();
         assertEquals(1, r);
@@ -70,7 +70,7 @@ public class TesteProjeto extends Teste{
     
     @Test
     public void deleteProjeto(){
-        int idtoremove = 4;
+        Long idtoremove = 4L;
         
         TypedQuery<Projeto> query = em.createQuery("SELECT e FROM Projeto e WHERE e.id = :id", Projeto.class);
         query.setParameter("id", idtoremove);

@@ -10,6 +10,7 @@ import javax.validation.ConstraintViolationException;
 import org.hamcrest.CoreMatchers;
 import static org.hamcrest.CoreMatchers.startsWith;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertThat;
 import org.junit.Test;
 import tests.DESCORP.java.Teste;
@@ -59,7 +60,7 @@ public class EmpregadoValidadorTeste extends Teste {
             });
 
             assertEquals(7, constraintViolations.size());
-            assertEquals(emp.getId(), 0);
+            assertNull(emp.getId());
             throw e;
         }
     

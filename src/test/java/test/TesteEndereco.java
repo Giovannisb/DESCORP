@@ -35,7 +35,7 @@ public class TesteEndereco extends Teste{
     @Test
     public void readEndereco() throws ParseException {
         Endereco endereco;
-        endereco = em.find(Endereco.class, 1);
+        endereco = em.find(Endereco.class, 1L);
 
         assertTrue("Paulista".equals(endereco.getCidade()));
      }
@@ -44,7 +44,7 @@ public class TesteEndereco extends Teste{
     public void updateCepEndereco(){
         TypedQuery<Endereco> q = em.createNamedQuery("Update.Endereco.cep", Endereco.class);
         String newCep = "54.410-280";
-        int id2Update = 3;
+        Long id2Update = 3L;
         q.setParameter("cep", newCep).setParameter("id", id2Update);
 
         int r = q.executeUpdate();
@@ -59,7 +59,7 @@ public class TesteEndereco extends Teste{
     public void updateEstadoEndereco(){
         TypedQuery<Endereco> q = em.createNamedQuery("Update.Endereco.estado", Endereco.class);
         String newEstado = "PB";
-        int id2Update = 3;
+        Long id2Update = 3L;
         q.setParameter("estado", newEstado).setParameter("id", id2Update);
 
         int r = q.executeUpdate();
@@ -70,18 +70,5 @@ public class TesteEndereco extends Teste{
         assertEquals(newEstado, endereco.getEstado());
     }
     
-//    @Test
-////    public void deleteEndereco(){
-////        TypedQuery<Endereco> q = em.createNamedQuery("Delete.Endereco", Endereco.class);
-////        int id = 2;
-////        q.setParameter("id", id);
-////
-////        int r = q.executeUpdate();
-////        assertTrue(1== r);
-////
-////        Endereco end = em.find(Endereco.class, 1);
-////        em.refresh(end);
-////        assertNull(end);
-////    }
     
 }

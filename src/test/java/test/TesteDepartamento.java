@@ -25,7 +25,7 @@ public class TesteDepartamento extends Teste {
         Departamento aux = new Departamento();
         aux.setName("VENDAS");
         
-        Empregado e = em.find(Empregado.class, 2);
+        Empregado e = em.find(Empregado.class, 2L);
         List<Empregado> funcs = new ArrayList<>();
         funcs.add(e);
         
@@ -39,10 +39,10 @@ public class TesteDepartamento extends Teste {
     @Test
     public void readDepartamento() throws ParseException {
         Departamento departamento;
-        departamento = em.find(Departamento.class, 1);
+        departamento = em.find(Departamento.class, 1L);
 
         assertEquals("TI", departamento.getName());
-        assertEquals(1, departamento.getId());
+        assertTrue(1L == departamento.getId());
     }
     
     @Test 
@@ -52,7 +52,7 @@ public class TesteDepartamento extends Teste {
         q.setParameter("name", newName).setParameter("id", 1);
         int r = q.executeUpdate();
         assertEquals(1, r);
-        Departamento departamento = em.find(Departamento.class, 1);
+        Departamento departamento = em.find(Departamento.class, 1L);
         em.refresh(departamento);
         assertEquals(newName, departamento.getName());
     }

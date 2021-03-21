@@ -54,15 +54,7 @@ import validadores.ValidaSalarioAnnotation;
 @DiscriminatorValue(value = "E")
 @PrimaryKeyJoinColumn(name="ID_USUARIO", referencedColumnName = "ID")
 public class Empregado extends Usuario implements Serializable {
-//    @Id
-//    @GeneratedValue( strategy= GenerationType.IDENTITY ) 
-//    private int id;
-//    
-//    @Column(name = "name")
-//    @NotBlank
-//    @Size(min = 1, max = 30)
-//    @Pattern(regexp= "\\p{Upper}{1}\\p{Lower}+", message = "A primeira letra deve ser maiúscula")
-//    private String name;
+
     
     @Column(name = "salario")
     @ValidaSalarioAnnotation
@@ -71,26 +63,13 @@ public class Empregado extends Usuario implements Serializable {
     @Column(name = "cargo")
     @NotBlank
     private String cargo;
-//    
-//    @Column(name ="cpf", nullable =false, unique= true)
-//    @CPF
-//    private String cpf;
-//    
-//    @Column(name = "email")
-//    @Email
-//    private String email;
-//  
-//    
+  
     @ManyToOne(fetch = FetchType.LAZY, optional = false, cascade = CascadeType.ALL)
     @JoinColumn(name = "id_departamento", referencedColumnName = "id")
     @NotNull
     private Departamento departamento;
     
-//    @OneToOne(fetch = FetchType.LAZY, cascade=CascadeType.ALL)
-//    @JoinColumn(name = "id_endereco", referencedColumnName = "id")
-//    @NotNull
-//    private Endereco endereco;
-//   
+
     
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "empregado")
     private List<Conta> contas = new ArrayList<>();
@@ -112,7 +91,7 @@ public class Empregado extends Usuario implements Serializable {
     }
 
 
-    public Empregado(int id, 
+    public Empregado(Long id, 
     String name, double salario, String cargo){
         super( );
         this.id = id;
@@ -125,21 +104,6 @@ public class Empregado extends Usuario implements Serializable {
         super();
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public double getSalario() {
         return salario;
@@ -156,22 +120,7 @@ public class Empregado extends Usuario implements Serializable {
     public void setCargo(String cargo) {
         this.cargo = cargo;
     }
-    public String getCpf() {
-        return cpf;
-    }
-
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
-    
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-    
+      
     public Departamento getDepartamento() {
         return departamento;
     }
@@ -180,10 +129,10 @@ public class Empregado extends Usuario implements Serializable {
         this.departamento = departamento;
     }
 
-    public Endereco getEndereco() {
-        return endereco;
+
+    @Override
+    public String toString() {
+        return "com.mycompany.descorp.Empregado[ id=" + id + " ]";
     }
-    public void setEndereco(Endereco endereco) {
-        this.endereco = endereco;
-    }
+
 }

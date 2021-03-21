@@ -18,7 +18,7 @@ public class TesteEmpregado extends Teste{
     @Test
     public void createEmpregado() {
         Empregado aux = new Empregado();
-        Endereco end = em.find(Endereco.class, 3);
+        Endereco end = em.find(Endereco.class, 3L);
         aux.setEndereco(end);
         aux.setName("Ulisses");
         aux.setCargo("DIRETOR");
@@ -26,7 +26,7 @@ public class TesteEmpregado extends Teste{
         aux.setEmail("email@email.com");
         aux.setSalario(15800.00);
         
-        Departamento dpto = em.find(Departamento.class, 1);
+        Departamento dpto = em.find(Departamento.class, 1L);
         aux.setDepartamento(dpto);
         em.persist(aux);
         em.flush(); //força que a persistência realizada vá para o banco neste momento.
@@ -38,10 +38,10 @@ public class TesteEmpregado extends Teste{
     @Test
     public void readDepartamento() throws ParseException {
         Empregado empregado;
-        empregado = em.find(Empregado.class, 1);
+        empregado = em.find(Empregado.class, 1L);
 
         assertEquals("Giovanni", empregado.getName());
-        assertEquals(1, empregado.getId());
+        assertTrue(1L == empregado.getId());
     }
     
     @Test
@@ -52,7 +52,7 @@ public class TesteEmpregado extends Teste{
         query.setParameter("salario", sal).setParameter("id", 1);
         int r = query.executeUpdate();
         assertEquals(1, r);
-        Empregado empregado = em.find(Empregado.class, 1);
+        Empregado empregado = em.find(Empregado.class, 1L);
         em.refresh(empregado);
 
         assertTrue(sal == empregado.getSalario());
@@ -61,7 +61,7 @@ public class TesteEmpregado extends Teste{
     @Test
     public void deleteEmpregado(){
         
-        int idtoremove = 4;
+        Long idtoremove = 4L;
         TypedQuery<Empregado> query = em.createQuery("SELECT e FROM Empregado e WHERE e.id = :id", Empregado.class);
         query.setParameter("id", idtoremove);
         

@@ -35,7 +35,7 @@ import javax.validation.constraints.Size;
 public class Conta implements Serializable {
     @Id
     @GeneratedValue( strategy= GenerationType.IDENTITY ) 
-    private int id;
+    private Long id;
 
     @Column(name = "banco", nullable = false)
     @Size(min = 2, max = 15)
@@ -64,7 +64,7 @@ public class Conta implements Serializable {
     @NotNull
     private Empregado empregado;
 
-    public Conta(int id, String banco, String conta, int digito, String agencia){
+    public Conta(Long id, String banco, String conta, int digito, String agencia){
         super();
         this.id = id;
         this.banco = banco;
@@ -77,11 +77,11 @@ public class Conta implements Serializable {
         super();
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -133,4 +133,24 @@ public class Conta implements Serializable {
         this.senha = senha;
     }
     
+   @Override
+    public int hashCode() {
+        int hash = 0;
+        hash += (this.id != null ? id.hashCode() : 0);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        if (!(object instanceof Conta)) {
+            return false;
+        }
+        Conta other = (Conta) object;
+        return !((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id)));
+    }
+
+    @Override
+    public String toString() {
+        return "com.mycompany.descorp.Conta[ id=" + id + " ]";
+    }
 }

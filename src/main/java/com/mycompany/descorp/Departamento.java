@@ -42,7 +42,7 @@ import javax.validation.constraints.Size;
 public class Departamento implements Serializable {
     @Id 
     @GeneratedValue( strategy=GenerationType.IDENTITY )
-    private int id;
+    private Long id;
     
     @Column(name = "name", nullable = false, unique = true)
     @NotBlank
@@ -61,11 +61,11 @@ public class Departamento implements Serializable {
         this.empregados = empregados;
     }
    
-    public int getId(){
+    public Long getId(){
         return id;
     }
     
-    public void setId(int id){
+    public void setId(Long id){
         this.id = id;
     }
     
@@ -75,6 +75,27 @@ public class Departamento implements Serializable {
     
     public void setName( String name ){
         this.name = name;
+    }
+    
+    @Override
+    public int hashCode() {
+        int hash = 0;
+        hash += (this.id != null ? id.hashCode() : 0);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        if (!(object instanceof Departamento)) {
+            return false;
+        }
+        Departamento other = (Departamento) object;
+        return !((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id)));
+    }
+
+    @Override
+    public String toString() {
+        return "com.mycompany.descorp.Departamento[ id=" + id + " ]";
     }
 
 }

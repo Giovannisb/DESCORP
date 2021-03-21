@@ -11,6 +11,7 @@ import javax.validation.ConstraintViolationException;
 import org.hamcrest.CoreMatchers;
 import static org.hamcrest.CoreMatchers.startsWith;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertThat;
 import org.junit.Test;
 import tests.DESCORP.java.Teste;
@@ -54,7 +55,7 @@ public class EnderecoValidadorTeste extends Teste{
             });
 
             assertEquals(5, constraintViolations.size());
-            assertEquals(ed.getId(), 0);
+            assertNull(ed.getId());
             throw e;
         }
     

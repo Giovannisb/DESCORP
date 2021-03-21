@@ -23,7 +23,7 @@ public class TesteConta extends Teste{
         c.setDigito(9);
         c.setAgencia("1236");
         c.setSenha("*3nQQ{<C");
-        Empregado empregado = em.find(Empregado.class, 1);
+        Empregado empregado = em.find(Empregado.class, 1L);
         c.setEmpregado(empregado);
 
         em.persist(c);
@@ -35,7 +35,7 @@ public class TesteConta extends Teste{
     @Test
     public void readConta() throws ParseException {
         Conta conta;
-        conta = em.find(Conta.class, 1);
+        conta = em.find(Conta.class, 1L);
 
         assertEquals("ITAU", conta.getBanco());
      }
@@ -43,7 +43,7 @@ public class TesteConta extends Teste{
     @Test
     public void updateConta(){
         TypedQuery<Conta> q = em.createNamedQuery("Update.Conta", Conta.class);
-        int id2update = 3;
+        Long id2update = 3L;
         String newBanco = "BANCO SAFRA";
         String newConta = "94750";
         int newDigito = 0;
@@ -64,7 +64,7 @@ public class TesteConta extends Teste{
     @Test
     public void deleteConta(){
         
-        int idtoremove = 4;
+        Long idtoremove = 4L;
         TypedQuery<Conta> query = em.createQuery("SELECT e FROM Conta e WHERE e.id = :id", Conta.class);
         query.setParameter("id", idtoremove);
         

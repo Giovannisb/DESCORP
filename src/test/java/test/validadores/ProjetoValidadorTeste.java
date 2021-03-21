@@ -1,5 +1,6 @@
 package test.validadores;
 
+import com.mycompany.descorp.Empregado;
 import javax.validation.ConstraintViolationException;
 
 import com.mycompany.descorp.Projeto;
@@ -10,6 +11,7 @@ import javax.validation.ConstraintViolation;
 import org.hamcrest.CoreMatchers;
 import static org.hamcrest.CoreMatchers.startsWith;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertThat;
 
 import org.junit.Test;
@@ -27,7 +29,7 @@ public class ProjetoValidadorTeste extends Teste{
             p = new Projeto();
             p.setNome(""); //Nome inválido
             p.setDescricao(""); //descrição inválida.
-            p.setEmpregados(new ArrayList<>()); //lista inválida;
+            p.setEmpregados(new ArrayList<Empregado>()); //lista inválida;
             em.persist(p);
             em.flush();
             
@@ -45,7 +47,7 @@ public class ProjetoValidadorTeste extends Teste{
             });
 
             assertEquals(3, constraintViolations.size());
-            assertEquals(p.getId(), 0);
+            assertNull(p.getId());
             throw e;
         }
 

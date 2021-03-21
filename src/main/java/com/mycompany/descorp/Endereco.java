@@ -43,7 +43,7 @@ import validadores.ValidaEstadoAnnotation;
 public class Endereco implements Serializable {
     @Id
     @GeneratedValue( strategy= GenerationType.IDENTITY ) 
-    private int id;
+    private Long id;
         
     @Column(name = "cep", nullable = false)
     @NotBlank
@@ -70,7 +70,7 @@ public class Endereco implements Serializable {
     @NotBlank
     private String estado;
     
-    public Endereco(int id,  String cep, String logradouro, int numero, String complemento, String cidade, String estado){
+    public Endereco(Long id,  String cep, String logradouro, int numero, String complemento, String cidade, String estado){
         super( );
         this.id = id;
         this.cep = cep;
@@ -85,11 +85,11 @@ public class Endereco implements Serializable {
         super();
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -134,5 +134,27 @@ public class Endereco implements Serializable {
 
     public void setEstado(String e) {
         this.estado = e;
+    }
+    
+      
+   @Override
+    public int hashCode() {
+        int hash = 0;
+        hash += (this.id != null ? id.hashCode() : 0);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        if (!(object instanceof Endereco)) {
+            return false;
+        }
+        Endereco other = (Endereco) object;
+        return !((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id)));
+    }
+
+    @Override
+    public String toString() {
+        return "com.mycompany.descorp.Endereco[ id=" + id + " ]";
     }
 }

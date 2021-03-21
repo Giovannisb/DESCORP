@@ -1,6 +1,5 @@
 package com.mycompany.descorp;
 
-import java.awt.print.Book;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -41,7 +40,7 @@ public class Projeto implements Serializable{
 
     @Id
     @GeneratedValue( strategy= GenerationType.IDENTITY ) 
-    private int id;
+    private Long id;
         
     @Column(name = "nome", nullable = false, unique = true)
     @NotBlank
@@ -55,7 +54,7 @@ public class Projeto implements Serializable{
     @Size(min = 1, max = 50)
     private List<Empregado> empregados = new ArrayList<Empregado>();
 
-    public Projeto(int id,  String nome, String descricao){
+    public Projeto(Long id,  String nome, String descricao){
         super();
         this.id = id;
         this.nome = nome;
@@ -66,10 +65,10 @@ public class Projeto implements Serializable{
         super();
     }
 
-    public int getId(){
+    public Long getId(){
         return this.id;
     }
-    public void setId(int newId){
+    public void setId(Long newId){
         this.id = newId;
     }
     public String getNome() {
@@ -92,5 +91,26 @@ public class Projeto implements Serializable{
 
     public void setEmpregados(List<Empregado> empregados) {
         this.empregados = empregados;
+    }
+    
+       @Override
+    public int hashCode() {
+        int hash = 0;
+        hash += (this.id != null ? id.hashCode() : 0);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        if (!(object instanceof Projeto)) {
+            return false;
+        }
+        Projeto other = (Projeto) object;
+        return !((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id)));
+    }
+
+    @Override
+    public String toString() {
+        return "com.mycompany.descorp.Projeto[ id=" + id + " ]";
     }
 }

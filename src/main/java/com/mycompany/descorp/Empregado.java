@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -18,12 +19,15 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import org.hibernate.validator.constraints.br.CPF;
+import validadores.ValidaSalarioAnnotation;
 
 /**
  *
@@ -47,6 +51,8 @@ import org.hibernate.validator.constraints.br.CPF;
         )
     }
 )
+//@DiscriminatorValue(value = "V")
+//@PrimaryKeyJoinColumn(name="ID_USUARIO", referencedColumnName = "ID")
 public class Empregado implements Serializable {
     @Id
     @GeneratedValue( strategy= GenerationType.IDENTITY ) 
@@ -55,15 +61,15 @@ public class Empregado implements Serializable {
     @Column(name = "name")
     @NotBlank
     @Size(min = 1, max = 30)
-    @Pattern(regexp= "\\p{Upper}{1}\\p{Lower}+", message = "com.mycompany.descorp.Empregado.name")
+    @Pattern(regexp= "\\p{Upper}{1}\\p{Lower}+", message = "A primeira letra deve ser maiúscula")
     private String name;
     
     @Column(name = "salario")
+    @ValidaSalarioAnnotation
     private double salario;
     
     @Column(name = "cargo")
     @NotBlank
-    @Size(min = 2, max = 15)
     private String cargo;
     
     @Column(name ="cpf", nullable =false, unique= true)
@@ -77,10 +83,12 @@ public class Empregado implements Serializable {
     
     @ManyToOne(fetch = FetchType.LAZY, optional = false, cascade = CascadeType.ALL)
     @JoinColumn(name = "id_departamento", referencedColumnName = "id")
+    @NotNull
     private Departamento departamento;
     
     @OneToOne(fetch = FetchType.LAZY, cascade=CascadeType.ALL)
     @JoinColumn(name = "id_endereco", referencedColumnName = "id")
+    @NotNull
     private Endereco endereco;
    
     

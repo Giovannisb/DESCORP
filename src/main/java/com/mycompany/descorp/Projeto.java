@@ -52,7 +52,7 @@ public class Projeto implements Serializable{
     private String descricao;
 
     @ManyToMany(mappedBy="projetos")
-    @Size(min = 1)
+    @Size(min = 1, max = 50)
     private List<Empregado> empregados = new ArrayList<Empregado>();
 
     public Projeto(int id,  String nome, String descricao){

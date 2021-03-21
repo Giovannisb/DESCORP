@@ -47,7 +47,7 @@ public class Endereco implements Serializable {
         
     @Column(name = "cep", nullable = false)
     @NotBlank
-    @Pattern(regexp = "[0-90]{2}.[0-9]{3}-[0-9]{3}", message = "{com.mycompany.descorp.Endereco.cep}")
+    @Pattern(regexp = "[0-90]{2}.[0-9]{3}-[0-9]{3}", message = "CEP inválido")
     private String cep;
 
     @Column(name = "logradouro", nullable = false)
@@ -55,7 +55,6 @@ public class Endereco implements Serializable {
     private String logradouro;
     
     @Column(name = "numero", nullable = false)
-    @NotNull
     private int numero;
     
     @Column(name = "complemento", nullable = false)

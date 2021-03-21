@@ -44,11 +44,11 @@ public class Departamento implements Serializable {
     @GeneratedValue( strategy=GenerationType.IDENTITY )
     private int id;
     
-    @Column(name = "NAME", nullable = false, unique = true)
+    @Column(name = "name", nullable = false, unique = true)
     @NotBlank
-    @Size(min = 2, max = 15)
     private String name;
     
+    @Size(min= 1, max=50)
     @OneToMany(mappedBy = "departamento", fetch = FetchType.LAZY,
             cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Empregado> empregados = new ArrayList<>();

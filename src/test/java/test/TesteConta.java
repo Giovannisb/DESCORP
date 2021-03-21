@@ -22,6 +22,7 @@ public class TesteConta extends Teste{
         c.setConta("543543");
         c.setDigito(9);
         c.setAgencia("1236");
+        c.setSenha("*3nQQ{<C");
         Empregado empregado = em.find(Empregado.class, 1);
         c.setEmpregado(empregado);
 

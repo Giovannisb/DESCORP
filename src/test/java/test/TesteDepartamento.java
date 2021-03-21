@@ -2,7 +2,11 @@ package test;
 
 import tests.DESCORP.java.Teste;
 import com.mycompany.descorp.Departamento;
+import com.mycompany.descorp.Empregado;
+import static com.mycompany.descorp.Projeto_.empregados;
 import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.TypedQuery;
 import static org.junit.Assert.*;
 import org.junit.Test;
@@ -20,6 +24,12 @@ public class TesteDepartamento extends Teste {
     public void createDepartamento() {
         Departamento aux = new Departamento();
         aux.setName("VENDAS");
+        
+        Empregado e = em.find(Empregado.class, 2);
+        List<Empregado> funcs = new ArrayList<>();
+        funcs.add(e);
+        
+        aux.setEmpregados(funcs);
         em.persist(aux);
         em.flush(); //força que a persistência realizada vá para o banco neste momento.
 

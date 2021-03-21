@@ -18,11 +18,22 @@
 
     
     
-    <TB_EMPREGADO cpf="917.841.500-45" email="giovani@email.com" cargo="DEV" name="Giovanni" salario="4300.21" id_departamento="1" id_endereco="1"/>
-    <TB_EMPREGADO cpf="005.547.110-28" email="marcelo@email.com" cargo="ANALISTA" name="Marcelo" salario="5000.21" id_departamento="2" id_endereco="2"/>
-    <TB_EMPREGADO cpf="524.665.570-96" email="aline@email.com" cargo="ATENDENTE" name="Aline" salario="1280.90" id_departamento="3" id_endereco="3"/>
-    <TB_EMPREGADO cpf="058.260.180-03" email="paulo@email.com" cargo="SUPERVISOR" name="Paulo" salario="4300.21" id_departamento="4" id_endereco="4"/>
-    <TB_EMPREGADO cpf="476.158.160-33" email="mariana@email.com" cargo="GERENTE" name="Mariana" salario="9300.21" id_departamento="5" id_endereco="5"/>
+    <TB_USUARIO     disc_usuario="E"   cpf="917.841.500-45" email="giovani@email.com"  name="Giovanni"  id_endereco="1"/>
+    <TB_EMPREGADO   id_usuario="1"    cargo="DEV"  salario="4300.21" id_departamento="1" />
+    
+    <TB_USUARIO     disc_usuario="E"    cpf="005.547.110-28" email="marcelo@email.com" name="Marcelo" id_endereco="2"/>
+    <TB_EMPREGADO   id_usuario="2"    cargo="ANALISTA"  salario="5000.21" id_departamento="2" />
+    
+    <TB_USUARIO     disc_usuario="E"    cpf="524.665.570-96" email="aline@email.com" name="Aline"  id_endereco="3"/>
+    <TB_EMPREGADO   id_usuario="3"    cargo="ATENDENTE"  salario="1280.90" id_departamento="3" />
+    
+    
+    <TB_USUARIO     disc_usuario="E"    cpf="058.260.180-03" email="paulo@email.com" name="Paulo" id_endereco="4"/>
+    <TB_EMPREGADO   id_usuario="4"    cargo="SUPERVISOR"  salario="4300.21" id_departamento="4" />
+    
+    
+    <TB_USUARIO     disc_usuario="E"    cpf="476.158.160-33" email="mariana@email.com" name="Mariana" id_endereco="5"/>
+    <TB_EMPREGADO   id_usuario="5"    cargo="GERENTE"  salario="9300.21" id_departamento="5" />
 
  
     <!--OneToMany-->

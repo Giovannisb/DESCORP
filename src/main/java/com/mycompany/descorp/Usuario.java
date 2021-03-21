@@ -3,18 +3,23 @@ package com.mycompany.descorp;
 import java.io.Serializable;
 import javax.persistence.Access;
 import javax.persistence.AccessType;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import org.hibernate.validator.constraints.br.CPF;
@@ -25,25 +30,32 @@ import org.hibernate.validator.constraints.br.CPF;
 @DiscriminatorColumn(name = "DISC_USUARIO",
         discriminatorType = DiscriminatorType.STRING, length = 1)
 @Access(AccessType.FIELD)
-public class Usuario implements Serializable{
+public abstract class Usuario implements Serializable{
     
     @Id
     @GeneratedValue( strategy= GenerationType.IDENTITY ) 
-    private int id;
+    protected int id;
     
     @Column(name = "name")
     @NotBlank
     @Size(min = 1, max = 30)
     @Pattern(regexp= "\\p{Upper}{1}\\p{Lower}+", message = "A primeira letra deve ser maiúscula")
-    private String name;
+    protected String name;
     
     @Column(name ="cpf", nullable =false, unique= true)
     @CPF
-    private String cpf;
+    protected String cpf;
     
     @Column(name = "email")
     @Email
-    private String email;
+    protected String email;
+    
+    
+    @OneToOne(fetch = FetchType.LAZY, cascade=CascadeType.ALL)
+    @JoinColumn(name = "id_endereco", referencedColumnName = "id")
+    @NotNull
+    protected Endereco endereco;
+   
 
     public int getId() {
         return id;

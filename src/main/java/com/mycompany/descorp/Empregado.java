@@ -51,18 +51,18 @@ import validadores.ValidaSalarioAnnotation;
         )
     }
 )
-//@DiscriminatorValue(value = "V")
-//@PrimaryKeyJoinColumn(name="ID_USUARIO", referencedColumnName = "ID")
-public class Empregado implements Serializable {
-    @Id
-    @GeneratedValue( strategy= GenerationType.IDENTITY ) 
-    private int id;
-    
-    @Column(name = "name")
-    @NotBlank
-    @Size(min = 1, max = 30)
-    @Pattern(regexp= "\\p{Upper}{1}\\p{Lower}+", message = "A primeira letra deve ser maiúscula")
-    private String name;
+@DiscriminatorValue(value = "E")
+@PrimaryKeyJoinColumn(name="ID_USUARIO", referencedColumnName = "ID")
+public class Empregado extends Usuario implements Serializable {
+//    @Id
+//    @GeneratedValue( strategy= GenerationType.IDENTITY ) 
+//    private int id;
+//    
+//    @Column(name = "name")
+//    @NotBlank
+//    @Size(min = 1, max = 30)
+//    @Pattern(regexp= "\\p{Upper}{1}\\p{Lower}+", message = "A primeira letra deve ser maiúscula")
+//    private String name;
     
     @Column(name = "salario")
     @ValidaSalarioAnnotation
@@ -71,26 +71,26 @@ public class Empregado implements Serializable {
     @Column(name = "cargo")
     @NotBlank
     private String cargo;
-    
-    @Column(name ="cpf", nullable =false, unique= true)
-    @CPF
-    private String cpf;
-    
-    @Column(name = "email")
-    @Email
-    private String email;
-  
-    
+//    
+//    @Column(name ="cpf", nullable =false, unique= true)
+//    @CPF
+//    private String cpf;
+//    
+//    @Column(name = "email")
+//    @Email
+//    private String email;
+//  
+//    
     @ManyToOne(fetch = FetchType.LAZY, optional = false, cascade = CascadeType.ALL)
     @JoinColumn(name = "id_departamento", referencedColumnName = "id")
     @NotNull
     private Departamento departamento;
     
-    @OneToOne(fetch = FetchType.LAZY, cascade=CascadeType.ALL)
-    @JoinColumn(name = "id_endereco", referencedColumnName = "id")
-    @NotNull
-    private Endereco endereco;
-   
+//    @OneToOne(fetch = FetchType.LAZY, cascade=CascadeType.ALL)
+//    @JoinColumn(name = "id_endereco", referencedColumnName = "id")
+//    @NotNull
+//    private Endereco endereco;
+//   
     
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "empregado")
     private List<Conta> contas = new ArrayList<>();
